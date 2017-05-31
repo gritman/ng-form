@@ -1,7 +1,9 @@
 <div>
   <form #myForm="ngForm" (ngSubmit)="onSubmit(myForm.value)">
-    <div>用户名: <input ngModel name="username" type="text"></div>
-    <div>手机号: <input type="text"></div>
+    <div ngModelGroup="userInfo">
+      <div>用户名: <input #username="ngModel" ngModel name="username" type="text"></div>
+      <div>手机号: <input type="text"></div>
+    </div>
     <div>邮政编码: <input type="number"></div>
     <div>确认密码: <input type="password"></div>
     <button type="submit">注册</button>
@@ -9,4 +11,7 @@
 </div>
 <div>
   {{myForm.value | json}}
+</div>
+<div>
+  {{username.value}}
 </div>
