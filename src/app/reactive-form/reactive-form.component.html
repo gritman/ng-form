@@ -1,5 +1,7 @@
 <!-- 绑定formGroup把整个表单的处理方式变成响应式表单 -->
 <form [formGroup]="formModel" (submit)="onSubmit()">
+  <!--放在表单内就不能这么绑定了 <input [formControl]="username"> -->
+  <input formControlName="username">
   <div formGroupName="dateRange">
     起始日期:<input type="date" formControlName="from">
     截止日期:<input type="date" formControlName="to">

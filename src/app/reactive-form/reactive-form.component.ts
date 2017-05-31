@@ -8,11 +8,12 @@ import {FormArray, FormControl, FormGroup} from '@angular/forms';
 })
 export class ReactiveFormComponent implements OnInit {
 
-  // 模板式表单的ngModel指令会为input标签自动创建一个FormControl指令
-  username: FormControl = new FormControl('aaa'); // 参数是初始值
+
 
   // 代表整个表单,或者表单字段的固定的子集
   formModel: FormGroup = new FormGroup({
+    // 模板式表单的ngModel指令会为input标签自动创建一个FormControl指令
+    username: new FormControl('aaa'), // 参数是初始值
     dateRange: new FormGroup({
       from: new FormControl(),
       to: new FormControl()
