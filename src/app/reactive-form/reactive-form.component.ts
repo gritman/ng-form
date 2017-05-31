@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {FormArray, FormControl, FormGroup} from '@angular/forms';
 
 @Component({
@@ -13,8 +13,10 @@ export class ReactiveFormComponent implements OnInit {
 
   // 代表整个表单,或者表单字段的固定的子集
   formModel: FormGroup = new FormGroup({
-    from: new FormControl(),
-    to: new FormControl()
+    dateRange: new FormGroup({
+      from: new FormControl(),
+      to: new FormControl()
+    })
   });
 
   // 代表可以增长的字段集合,比如工作经历,获奖经历
@@ -24,9 +26,14 @@ export class ReactiveFormComponent implements OnInit {
     new FormControl('b@b.com')
   ]);
 
-  constructor() { }
+  constructor() {
+  }
 
   ngOnInit() {
+  }
+
+  onSubmit() {
+    console.log(this.formModel.value);
   }
 
 }
