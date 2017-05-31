@@ -5,8 +5,12 @@
     截止日期:<input type="date" formControlName="to">
   </div>
   <div>
-    <ul><li><input type="text"></li></ul>
-    <button type="button">增加Email</button>
+    <ul formArrayName="emails">
+      <li *ngFor="let e of this.formModel.get('emails').controls; let i = index;">
+        <input type="text" [formControlName]="i">
+      </li>
+    </ul>
+    <button type="button" (click)="addEmail()">增加Email</button>
   </div>
   <div>
     <button type="submit">保存</button>

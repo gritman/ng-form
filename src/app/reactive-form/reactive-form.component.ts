@@ -16,15 +16,16 @@ export class ReactiveFormComponent implements OnInit {
     dateRange: new FormGroup({
       from: new FormControl(),
       to: new FormControl()
-    })
+    }),
+    // 代表可以增长的字段集合,比如工作经历,获奖经历
+    // 没有key只有序号
+    emails: new FormArray([
+      new FormControl('a@a.com'),
+      new FormControl('b@b.com')
+    ])
   });
 
-  // 代表可以增长的字段集合,比如工作经历,获奖经历
-  // 没有key只有序号
-  emails: FormArray = new FormArray([
-    new FormControl('a@a.com'),
-    new FormControl('b@b.com')
-  ]);
+
 
   constructor() {
   }
@@ -36,4 +37,8 @@ export class ReactiveFormComponent implements OnInit {
     console.log(this.formModel.value);
   }
 
+  addEmail() {
+    const emails = this.formModel.get('emails') as FormArray;
+    emails.push(new FormControl());
+  }
 }
