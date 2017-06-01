@@ -18,9 +18,12 @@
       </div>
       <div>确认密码: <input type="password" formControlName="pconfirm"></div>
       <div [hidden]="!formModel.hasError('equal', 'passwordsGroup')">
-        两次输入的密码不匹配
+        {{formModel.getError('equal', 'passwordsGroup')?.desc}}
       </div>
     </div>
     <button type="submit">注册</button>
   </form>
+  <div>
+    {{formModel.status}}
+  </div>
 </div>
