@@ -17,7 +17,7 @@ export class ReactiveBuilderRegistComponent implements OnInit {
       passwordsGroup: fb.group({
         password: [''],
         pconfirm: ['']
-      })
+      }, {validator: this.equalValidator})
     });
   }
 
@@ -38,5 +38,13 @@ export class ReactiveBuilderRegistComponent implements OnInit {
     const valid = myreg.test(control.value);
     console.log('mobile的校验结果是: ' + valid);
     return valid ? null : {mobile: true};
+  }
+
+  equalValidator(group: FormGroup): any {
+    const password: FormControl = group.get('password') as FormControl;
+    const pconfirm: FormControl = group.get('pconfirm') as FormControl;
+    const valid: boolean = password.value === pconfirm.value;
+    console.log('密码校验结果: ' + valid);
+    return valid ? null : {equal: true};
   }
 }
