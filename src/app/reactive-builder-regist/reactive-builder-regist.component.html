@@ -11,8 +11,15 @@
       </div>
     </div>
     <div>手机号: <input type="number" formControlName="mobile"></div>
-    <div [hidden]="!formModel.hasError('mobile', 'mobile')">
-      请输入正确的手机号
+    <!-- pristine和dirty关注字段的值有没有变过,touch和untouched关注字段有没有获取焦点 -->
+    <div [hidden]="formModel.get('mobile').valid || formModel.get('mobile').pristine">
+      <div [hidden]="!formModel.hasError('mobile', 'mobile')">
+        请输入正确的手机号
+      </div>
+    </div>
+    <!-- 当pending为true的时候,说明正在校验,所以不显示 -->
+    <div [hidden]="!formModel.get('mobile').pending">
+      正在校验手机号合法性
     </div>
     <div formGroupName="passwordsGroup">
       <div>密码: <input type="password" formControlName="password"></div>
