@@ -1,11 +1,14 @@
 <div>
   <form [formGroup]="formModel" (submit)="onSubmit()">
     <div>用户名: <input type="text" formControlName="username"></div>
-    <div [hidden]="!formModel.hasError('required', 'username')"> <!-- required用的是key,只要有值就是校验错误 -->
-      用户名是必填项
-    </div>
-    <div [hidden]="!formModel.hasError('minlength', 'username')">
-      用户名的最小长度是6
+    <!-- 当表单校验通过或者用户从来没输入时,不显示错误信息 -->
+    <div [hidden]="formModel.get('username').valid || formModel.get('username').untouched">
+      <div [hidden]="!formModel.hasError('required', 'username')"> <!-- required用的是key,只要有值就是校验错误 -->
+        用户名是必填项
+      </div>
+      <div [hidden]="!formModel.hasError('minlength', 'username')">
+        用户名的最小长度是6
+      </div>
     </div>
     <div>手机号: <input type="number" formControlName="mobile"></div>
     <div [hidden]="!formModel.hasError('mobile', 'mobile')">
