@@ -22,6 +22,11 @@ export function mobileAsyncValidator(control: FormControl): any {
 export function equalValidator(group: FormGroup): any {
   const password: FormControl = group.get('password') as FormControl;
   const pconfirm: FormControl = group.get('pconfirm') as FormControl;
+  // 模板式表单的属性是异步的,所以不能同步访问,因为可能会取到null值
+  if (password == null || pconfirm == null) {
+    console.log('password == null || pconfirm == null');
+    return {desc: 'equalValidator: password == null || pconfirm == null'};
+  }
   const valid: boolean = password.value === pconfirm.value;
   console.log('密码校验结果: ' + valid);
   return valid ? null : {equal: {desc: '两次密码不匹配'}};

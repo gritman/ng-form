@@ -1,4 +1,6 @@
 <!-- 绑定formGroup把整个表单的处理方式变成响应式表单 -->
+<div>
+<h2>这是普通响应式表单</h2>
 <form [formGroup]="formModel" (submit)="onSubmit()">
   <!--放在表单内就不能这么绑定了 <input [formControl]="username"> -->
   <input formControlName="username">
@@ -18,3 +20,4 @@
     <button type="submit">保存</button>
   </div>
 </form>
+</div>
