@@ -9,6 +9,7 @@ import { ReactiveFormComponent } from './reactive-form/reactive-form.component';
 import { ReactiveRegistComponent } from './reactive-regist/reactive-regist.component';
 import { ReactiveBuilderRegistComponent } from './reactive-builder-regist/reactive-builder-regist.component';
 import { MobileValidatorDirective } from './directives/mobile-validator.directive';
+import { EqualValidatorDirective } from './directives/equal-validator.directive';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { MobileValidatorDirective } from './directives/mobile-validator.directiv
     ReactiveFormComponent,
     ReactiveRegistComponent,
     ReactiveBuilderRegistComponent,
-    MobileValidatorDirective
+    MobileValidatorDirective,
+    EqualValidatorDirective
   ],
   imports: [
     BrowserModule,
